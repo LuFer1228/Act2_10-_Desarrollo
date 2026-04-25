@@ -1,6 +1,7 @@
-# "Base de datos" en memoria (un diccionario de Python)
+# models.py
+
 personajes = {}
-contador_id = 1  # Para generar IDs automáticos
+contador_id = 1
 
 
 def crear_personaje(datos):
@@ -8,11 +9,10 @@ def crear_personaje(datos):
 
     personaje = {
         "id": contador_id,
-        # Atributos básicos
         "nombre": datos["nombre"],
         "color_piel": datos["color_piel"],
         "raza": datos["raza"],
-        # Estadísticas de combate
+        "elemental": datos.get("elemental", "ninguno"),
         "fuerza": datos.get("fuerza", 10),
         "agilidad": datos.get("agilidad", 10),
         "magia": datos.get("magia", 10),
@@ -34,9 +34,9 @@ def obtener_por_id(pid):
 
 def actualizar_personaje(pid, datos):
     if pid not in personajes:
-        return "Personaje no encontrado"
+        return None
     personaje = personajes[pid]
-    for campo in ["nombre", "color_piel", "raza", "fuerza", "agilidad", "magia", "conocimiento"]:
+    for campo in ["nombre", "color_piel", "raza", "elemental", "fuerza", "agilidad", "magia", "conocimiento"]:
         if campo in datos:
             personaje[campo] = datos[campo]
     return personaje
