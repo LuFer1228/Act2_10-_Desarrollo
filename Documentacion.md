@@ -18,7 +18,7 @@ cd Act2_10-_Desarrollo
 ```bash
 pip install -r requirements.txt
 ```
-
+### nota: se uso la extension de Visual studio Code "Thunder Client"
 ### 3. Correr el servidor
 ```bash
 python app.py
